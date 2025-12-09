@@ -1,0 +1,86 @@
+
+services:
+  php8.2:
+    build:
+      context: ./docker/php8.2
+    hostname: php8.2
+    ports:
+      - "10005:9000"
+    volumes:
+      - ./projects/:/var/www/html/
+      - ./docker/php8.2/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./docker/php8.2/php.ini:/usr/local/etc/php/php.ini
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - backend
+  php8.3:
+    build:
+      context: ./docker/php8.3
+    hostname: php8.3
+    ports:
+      - "10006:9000"
+    volumes:
+      - ./projects/:/var/www/html/
+      - ./docker/php8.3/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./docker/php8.3/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - backend
+
+  php8.4:
+    build:
+      context: ./docker/php8.4
+    hostname: php8.4
+    ports:
+      - "10007:9000"
+    volumes:
+      - ./projects/:/var/www/html/
+      - ./docker/php8.4/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./docker/php8.4/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - backend
+  nginx:
+    image: nginx:1.13.8
+    ports:
+      - "80:80"
+      - "8000:8000"
+      - "8888:8888"
+    volumes:
+      - ./projects/:/var/www/html/
+      -  ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php8.2
+      - php8.3
+      - php8.4
+    networks:
+      - backend
+  mysql:
+    image: mysql:8
+    container_name: proje-mysql-1
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: 1234
+    networks:
+      - backend
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: proje-mysql-1
+      PMA_USER: laravel
+      PMA_PASSWORD: "1234"
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
