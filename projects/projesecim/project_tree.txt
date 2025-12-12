@@ -1,0 +1,205 @@
+.
+|-- .editorconfig
+|-- .env
+|-- .env.example
+|-- .gitattributes
+|-- .gitignore
+|-- README.md
+|-- app
+|   |-- Console
+|   |   |-- Commands
+|   |   |   `-- CalculateDelegates.php
+|   |   `-- Kernel.php
+|   |-- Http
+|   |   |-- Controllers
+|   |   |   |-- Admin
+|   |   |   |   |-- AdminController.php
+|   |   |   |   |-- ClubCompetitionController.php
+|   |   |   |   |-- ClubController.php
+|   |   |   |   `-- CompetitionController.php
+|   |   |   |-- Auth
+|   |   |   |   |-- AuthenticatedSessionController.php
+|   |   |   |   |-- ConfirmablePasswordController.php
+|   |   |   |   |-- EmailVerificationNotificationController.php
+|   |   |   |   |-- EmailVerificationPromptController.php
+|   |   |   |   |-- NewPasswordController.php
+|   |   |   |   |-- PasswordController.php
+|   |   |   |   |-- PasswordResetLinkController.php
+|   |   |   |   |-- RegisteredUserController.php
+|   |   |   |   `-- VerifyEmailController.php
+|   |   |   |-- Controller.php
+|   |   |   `-- ProfileController.php
+|   |   |-- Kernel.php
+|   |   |-- Middleware
+|   |   |   `-- AdminOnly.php
+|   |   `-- Requests
+|   |       |-- Auth
+|   |       |   `-- LoginRequest.php
+|   |       `-- ProfileUpdateRequest.php
+|   |-- Models
+|   |   |-- Category.php
+|   |   |-- Club.php
+|   |   |-- ClubCompetition.php
+|   |   |-- Competition.php
+|   |   |-- Delegate.php
+|   |   |-- Discipline.php
+|   |   |-- NationalAthlete.php
+|   |   |-- Season.php
+|   |   `-- User.php
+|   |-- Providers
+|   |   `-- AppServiceProvider.php
+|   |-- Services
+|   |   `-- DelegateCalculator.php
+|   `-- View
+|       `-- Components
+|           |-- AppLayout.php
+|           `-- GuestLayout.php
+|-- artisan
+|-- bootstrap
+|   |-- app.php
+|   |-- cache
+|   |   |-- .gitignore
+|   |   |-- packages.php
+|   |   `-- services.php
+|   `-- providers.php
+|-- composer.json
+|-- composer.lock
+|-- config
+|   |-- app.php
+|   |-- auth.php
+|   |-- cache.php
+|   |-- database.php
+|   |-- filesystems.php
+|   |-- logging.php
+|   |-- mail.php
+|   |-- queue.php
+|   |-- services.php
+|   `-- session.php
+|-- database
+|   |-- .gitignore
+|   |-- factories
+|   |   `-- UserFactory.php
+|   |-- migrations
+|   |   |-- 0001_01_01_000000_create_users_table.php
+|   |   |-- 0001_01_01_000001_create_cache_table.php
+|   |   |-- 0001_01_01_000002_create_jobs_table.php
+|   |   |-- 2025_12_09_193215_create_clubs_table.php
+|   |   |-- 2025_12_09_193219_create_seasons_table.php
+|   |   |-- 2025_12_09_193225_create_disciplines_table.php
+|   |   |-- 2025_12_09_193229_create_categories_table.php
+|   |   |-- 2025_12_09_193234_create_competitions_table.php
+|   |   |-- 2025_12_09_193239_create_club_competitions_table.php
+|   |   |-- 2025_12_09_193244_create_national_athletes_table.php
+|   |   |-- 2025_12_09_193249_create_delegates_table.php
+|   |   |-- 2025_12_09_195648_add_is_admin_to_users_table.php
+|   |   `-- 2025_12_11_101020_add_season_id_to_club_competitions_table.php
+|   |-- schema
+|   `-- seeders
+|       |-- AdminUserSeeder.php
+|       |-- DatabaseSeeder.php
+|       `-- InitialDataSeeder.php
+|-- package-lock.json
+|-- package.json
+|-- phpunit.xml
+|-- postcss.config.js
+|-- project_tree.txt
+|-- public
+|   |-- .htaccess
+|   |-- build
+|   |   |-- assets
+|   |   |   |-- app-C9BXtK88.css
+|   |   |   `-- app-CJy8ASEk.js
+|   |   `-- manifest.json
+|   |-- favicon.ico
+|   |-- index.php
+|   `-- robots.txt
+|-- resources
+|   |-- css
+|   |   `-- app.css
+|   |-- js
+|   |   |-- app.js
+|   |   `-- bootstrap.js
+|   `-- views
+|       |-- admin
+|       |   |-- club_competitions
+|       |   |   |-- create.blade.php
+|       |   |   |-- edit.blade.php
+|       |   |   `-- index.blade.php
+|       |   |-- clubs
+|       |   |   |-- create.blade.php
+|       |   |   |-- edit.blade.php
+|       |   |   `-- index.blade.php
+|       |   |-- competitions
+|       |   |   |-- create.blade.php
+|       |   |   |-- edit.blade.php
+|       |   |   `-- index.blade.php
+|       |   |-- dashboard.blade.php
+|       |   |-- delegates
+|       |   |   |-- calculate.blade.php
+|       |   |   |-- delegates.blade.php
+|       |   |   |-- index.blade.php
+|       |   |   `-- voting-rights.blade.php
+|       |   |-- layouts
+|       |   |   `-- app.blade.php
+|       |   |-- partials
+|       |   |   `-- nav.blade.php
+|       |   `-- voting-rights
+|       |       `-- index.blade.php
+|       |-- auth
+|       |   |-- confirm-password.blade.php
+|       |   |-- forgot-password.blade.php
+|       |   |-- login.blade.php
+|       |   |-- register.blade.php
+|       |   |-- reset-password.blade.php
+|       |   `-- verify-email.blade.php
+|       |-- components
+|       |   |-- application-logo.blade.php
+|       |   |-- auth-session-status.blade.php
+|       |   |-- danger-button.blade.php
+|       |   |-- dropdown-link.blade.php
+|       |   |-- dropdown.blade.php
+|       |   |-- input-error.blade.php
+|       |   |-- input-label.blade.php
+|       |   |-- modal.blade.php
+|       |   |-- nav-link.blade.php
+|       |   |-- primary-button.blade.php
+|       |   |-- responsive-nav-link.blade.php
+|       |   |-- secondary-button.blade.php
+|       |   `-- text-input.blade.php
+|       |-- dashboard.blade.php
+|       |-- layouts
+|       |   |-- admin.blade.php
+|       |   |-- app.blade.php
+|       |   |-- guest.blade.php
+|       |   `-- navigation.blade.php
+|       |-- profile
+|       |   |-- edit.blade.php
+|       |   `-- partials
+|       |       |-- delete-user-form.blade.php
+|       |       |-- update-password-form.blade.php
+|       |       `-- update-profile-information-form.blade.php
+|       `-- welcome.blade.php
+|-- routes
+|   |-- admin.php
+|   |-- auth.php
+|   |-- console.php
+|   `-- web.php
+|-- tailwind.config.js
+|-- tests
+|   |-- Feature
+|   |   |-- Auth
+|   |   |   |-- AuthenticationTest.php
+|   |   |   |-- EmailVerificationTest.php
+|   |   |   |-- PasswordConfirmationTest.php
+|   |   |   |-- PasswordResetTest.php
+|   |   |   |-- PasswordUpdateTest.php
+|   |   |   `-- RegistrationTest.php
+|   |   |-- ExampleTest.php
+|   |   `-- ProfileTest.php
+|   |-- Pest.php
+|   |-- TestCase.php
+|   `-- Unit
+|       `-- ExampleTest.php
+`-- vite.config.js
+
+49 directories, 154 files

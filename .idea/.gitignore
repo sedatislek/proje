@@ -1,8 +1,25 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+# Laravel
+/vendor
+/node_modules
+/public/build
+/public/hot
+.env
+.env.*
+storage/*.key
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker (runtime data)
+docker/mysql
+docker/mysql/**
+docker_mysql_backup
+docker_mysql_backup/**
+
+# IDE
+.idea
+.vscode
